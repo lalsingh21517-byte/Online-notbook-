@@ -10,6 +10,7 @@ jobs:
           channel: 'stable'
       - run: |
           flutter create --overwrite .
+          flutter pub get
           flutter build apk --debug
       - uses: actions/upload-artifact@v3
         with:
