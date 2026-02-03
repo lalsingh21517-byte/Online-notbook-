@@ -1,0 +1,32 @@
+{
+  "loans": [
+    {
+      "id": "unity_mel",
+      "bank": "Unity Small Finance Bank",
+      "loan_type": "MEL Saral Vyapar",
+      "principal": 100000,
+      "emi": 4140,
+      "frequency": "monthly",
+      "total_installments": 36,
+      "disbursement_date": "2025-09-15",
+      "last_emi_date": "2028-10-05",
+      "interest_rate": 28,
+      "paid_installments": 0,
+      "next_emi_date": "2025-10-15",
+      "photo_path": null
+    },
+    {
+      "id": "satin_agri",
+      "bank": "SATIN Creditcare Network Ltd.",
+      "principal": 60000,
+      "emi": 1730,
+      "frequency": "bi-weekly",
+      "total_installments": 104,
+      "purpose": "Agriculture/Fisheries",
+      "area": "Hodal / R122-Mathura",
+      "paid_installments": 0,
+      "next_emi_date": null,
+      "photo_path": null
+    }
+  ]
+}

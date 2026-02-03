@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>किस्त संभालो - EMI Dashboard</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f4; padding: 20px; }
+        .card { background: white; padding: 15px; margin-bottom: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; text-align: center; }
+        .bank-name { font-weight: bold; color: #e67e22; font-size: 1.2em; }
+        .emi-amount { color: #27ae60; font-size: 1.1em; font-weight: bold; }
+        .status { font-size: 0.9em; color: #7f8c8d; }
+    </style>
+</head>
+<body>
+    <h1>किस्त संभालो 📱</h1>
+    <div id="loan-list">Loading loans...</div>
+
+    <script>
+        fetch('data/loans.json')
+            .then(response => response.json())
+            .then(data => {
+                let html = '';
+                data.loans.forEach(loan => {
+                    html += `
+                        <div class="card">
+                            <div class="bank-name">${loan.bank}</div>
+                            <div>Loan: ${loan.loan_type || 'General'}</div>
+                            <div class="emi-amount">EMI: ₹${loan.emi} (${loan.frequency})</div>
+                            <div class="status">Next Date: ${loan.next_emi_date || 'TBD'}</div>
+                            <button onclick="alert('Kist updated!')" style="margin-top:10px;">आज किस्त भर दी ✅</button>
+                        </div>
+                    `;
+                });
+                document.getElementById('loan-list').innerHTML = html;
+            })
+            .catch(err => console.error('Error loading JSON:', err));
+    </script>
+</body>
+</html>
