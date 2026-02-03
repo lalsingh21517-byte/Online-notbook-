@@ -8,11 +8,19 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          cache: true
+      - name: Force Create Project Structure
+        run: |
+          # Agar koi file missing hai toh ye command use theek kar degi
+          flutter create --overwrite .
       - run: flutter pub get
-      # Agar project structure incomplete hai, toh ye command usse fix karegi
-      - run: flutter create . --platforms android
       - run: flutter build apk --debug
-      - uses: actions/upload-artifact@v3
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
         with:
-          name: kist-app
+          name: kist-app-final
           path: build/app/outputs/flutter-apk/app-debug.apk
+
+
+
+
